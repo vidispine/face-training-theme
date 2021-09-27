@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "https://vidispine.github.io/face-training-theme/static/js/main.f114254d.chunk.js",
+    "runtime-main.js": "https://vidispine.github.io/face-training-theme/static/js/runtime-main.af90093a.js",
+    "static/css/2.5d134567.chunk.css": "https://vidispine.github.io/face-training-theme/static/css/2.5d134567.chunk.css",
+    "static/js/2.306961aa.chunk.js": "https://vidispine.github.io/face-training-theme/static/js/2.306961aa.chunk.js",
+    "index.html": "https://vidispine.github.io/face-training-theme/index.html",
+    "static/js/2.306961aa.chunk.js.LICENSE.txt": "https://vidispine.github.io/face-training-theme/static/js/2.306961aa.chunk.js.LICENSE.txt",
+    "static/media/index.css": "https://vidispine.github.io/face-training-theme/static/media/roboto-latin-900italic.cb5ad999.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af90093a.js",
+    "static/css/2.5d134567.chunk.css",
+    "static/js/2.306961aa.chunk.js",
+    "static/js/main.f114254d.chunk.js"
+  ]
+}
