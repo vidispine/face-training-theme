@@ -19,7 +19,7 @@ Compile the application locally.
 yarn build
 ```
 
-## Enable S3 CORS Policy
+## Enable CORS Policy
 
 This must be set on the S3 bucket to allow playback of media using signed URLs.
 ```
@@ -29,4 +29,20 @@ This must be set on the S3 bucket to allow playback of media using signed URLs.
    <AllowedMethod>GET</AllowedMethod>
  </CORSRule>
 </CORSConfiguration>
+```
+
+This must be set on the VidiCore instance your application is running on.
+```
+<CORSConfigurationDocument xmlns="http://xml.vidispine.com/schema/vidispine">
+ <entry>
+  <request>
+   <origin>http://localhost:3000</origin>
+  </request>
+  <response>
+   <allowOrigin>http://localhost:3000</allowOrigin>
+   <allowMethods>OPTIONS,GET,HEAD,POST,PUT,DELETE</allowMethods>
+   <allowHeaders>accept,content-type,authorization,index,size,runas</allowHeaders>
+   <allowMaxAge>600</allowMaxAge>
+ </response>
+</entry>
 ```
