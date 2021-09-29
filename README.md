@@ -31,7 +31,7 @@ This must be set on the S3 bucket to allow playback of media using signed URLs. 
 </CORSConfiguration>
 ```
 
-### Enable S3 CORS Policy
+### Enable VidiCore CORS Policy
 
 This must be set on the VidiCore instance your application is running on. This can be done in the console of you choice or via Postman.
 `PUT /API/configuration/cors`
