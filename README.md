@@ -1,6 +1,6 @@
 # VidiCore Face Training Theme
 
-See [Knowledge Base](https://vidispine.atlassian.net/wiki/spaces/IES/pages/) for more information on the initial setup.
+See [Knowledge Base](https://support.vidispine.com/space/CKB/2237825191/DeepVA+Face+Training+Theme+for+VidiCore) for more information on the initial setup.
 
 ## Quick Start
 
@@ -25,7 +25,7 @@ This must be set on the S3 bucket to allow playback of media using signed URLs. 
 ```
 <CORSConfiguration>
  <CORSRule>
-   <AllowedOrigin>*</AllowedOrigin>
+   <AllowedOrigin>http://localhost:3000</AllowedOrigin>
    <AllowedMethod>GET</AllowedMethod>
  </CORSRule>
 </CORSConfiguration>
