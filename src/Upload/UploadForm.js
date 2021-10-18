@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { TextField, Switch as SwitchField, FormControlLabel } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { TRAINING_METADATA_KEY, TRAINING_METADATA_VALUE } from '../const';
 
 const styles = (theme) => ({
@@ -13,11 +13,11 @@ const styles = (theme) => ({
 });
 
 const UploadForm = ({ classes, onChange, values }) => {
-  const checked = React.useMemo(() => values[TRAINING_METADATA_KEY] === true, [values]);
+  const training = React.useMemo(() => values[TRAINING_METADATA_KEY] === true, [values]);
   return (
     <div className={classes.root}>
       <div className={classes.form}>
-        {!checked && (
+        {!training && (
           <TextField
             onChange={onChange('title')}
             value={values.title}
@@ -30,11 +30,11 @@ const UploadForm = ({ classes, onChange, values }) => {
             }}
           />
         )}
-        {checked && (
+        {training && (
           <TextField
             onChange={onChange(TRAINING_METADATA_VALUE)}
             value={values[TRAINING_METADATA_VALUE]}
-            label="Name"
+            label="Face name"
             variant="outlined"
             required
             fullWidth
@@ -43,16 +43,6 @@ const UploadForm = ({ classes, onChange, values }) => {
             }}
           />
         )}
-        <FormControlLabel
-          control={
-            <SwitchField
-              onChange={onChange(TRAINING_METADATA_KEY)}
-              checked={checked}
-              label="Training material"
-            />
-          }
-          label="Training material"
-        />
         {/*
         {values.trainingMaterial && (
           <>

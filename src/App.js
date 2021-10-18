@@ -18,7 +18,7 @@ import { SearchItem } from './Search';
 import { Upload, onUploadFile } from './Upload';
 import { Training, TrainingDetails } from './Training';
 
-import { BIN_LOCAL_STORAGE_KEY, TRAINING_METADATA_KEY, TRAINING_METADATA_VALUE } from './const';
+import { BIN_LOCAL_STORAGE_KEY } from './const';
 
 const onChangeBin = debounce((newValue) => {
   window.localStorage.setItem(BIN_LOCAL_STORAGE_KEY, JSON.stringify(newValue));
@@ -42,7 +42,6 @@ function App({ username: userName, onLogout, serverUrl, onLogin }) {
           provider: UploadProvider,
           uploadProps: {
             onUploadFile,
-            initialMetadata: { [TRAINING_METADATA_KEY]: false, [TRAINING_METADATA_VALUE]: '' },
             chunkedUploadProps: {
               chunkSize: 200000000, // 200mb chunks
               minChunkSize: 10000000, // 10mb
