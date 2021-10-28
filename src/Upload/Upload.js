@@ -1,10 +1,11 @@
 import React from 'react';
+import SwipableViews from 'react-swipeable-views';
 import { withStyles, Button, Collapse, Typography, Box } from '@material-ui/core';
 import { Upload } from '@vidispine/vdt-materialui';
 import clsx from 'clsx';
 import { UploadContext } from '../Context';
 import UploadForm from './UploadForm';
-import { TRAINING_METADATA_KEY } from '../const';
+// import { TRAINING_METADATA_KEY } from '../const';
 
 const styles = (theme) => ({
   root: {},
@@ -30,18 +31,23 @@ const styles = (theme) => ({
 });
 
 const ItemUpload = ({ classes }) => {
-  const { useUploadFiles, uploadType, setUploadType } = React.useContext(UploadContext);
+  const {
+    useContentUploadFiles,
+    useTrainingUploadFiles,
+    uploadType,
+    setUploadType,
+  } = React.useContext(UploadContext);
 
-  const { onChangeMetadata, files } = useUploadFiles({});
+  // const { onChangeMetadata, files } = useUploadFiles({});
 
   const toggleUploadType = (type) => {
     if (type === uploadType) return;
     setUploadType(type);
-    if (files.length > 0) {
-      files.forEach((f, i) => {
-        onChangeMetadata(i)({ [TRAINING_METADATA_KEY]: type === 'training' });
-      });
-    }
+    // if (files.length > 0) {
+    //   files.forEach((f, i) => {
+    //     onChangeMetadata(i)({ [TRAINING_METADATA_KEY]: type === 'training' });
+    //   });
+    // }
   };
 
   return (
@@ -70,17 +76,30 @@ const ItemUpload = ({ classes }) => {
           color="primary"
           fullWidth
         >
-          Training material
+          Faces
         </Button>
       </div>
       <Collapse in={!!uploadType} timeout="auto" unmountOnExit>
-        <Upload
-          useUploadFiles={useUploadFiles}
-          UploadEditorProps={{
-            UploadFormComponent: UploadForm,
-            UploadFormProps: { trainingMaterial: uploadType === 'training' },
-          }}
-        />
+        <SwipableViews index={uploadType === 'content' ? 0 : 1}>
+          <Upload
+            UploadButtonText="Upload Content"
+            allowUploadToCollection={false}
+            useUploadFiles={useContentUploadFiles}
+            UploadEditorProps={{
+              UploadFormComponent: UploadForm,
+              UploadFormProps: { trainingMaterial: uploadType === 'training' },
+            }}
+          />
+          <Upload
+            UploadButtonText="Upload Faces"
+            UploadToCollectionButtonText="Upload Faces to Collection"
+            useUploadFiles={useTrainingUploadFiles}
+            UploadEditorProps={{
+              UploadFormComponent: UploadForm,
+              UploadFormProps: { trainingMaterial: uploadType === 'training' },
+            }}
+          />
+        </SwipableViews>
       </Collapse>
     </>
   );

@@ -120,7 +120,7 @@ function SearchItemForm({
               defaultValue={initialSearchText}
               onSubmit={setSearchText}
               submitting={isLoading}
-              searchPlaceholder={t('searchItems')}
+              searchPlaceholder={t('Search content')}
               onChange={debouncedSetAutocompleteText}
               SuggestionsComponent={SearchSuggestions}
               suggestions={suggestions}

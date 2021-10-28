@@ -105,7 +105,7 @@ export default function Header({ userName, serverUrl, onLogout }) {
             color="inherit"
             disableRipple
           >
-            {t('items')}
+            {t('Content')}
           </Button>
           <Button
             activeClassName="selected"
