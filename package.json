@@ -39,6 +39,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "GENERATE_SOURCEMAP=false PUBLIC_URL=${npm_package_homepage} yarn build && cp build/index.html build/404.html",
+    "vidinet-predeploy": "GENERATE_SOURCEMAP=false PUBLIC_URL='/' yarn build && cp build/index.html build/404.html",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

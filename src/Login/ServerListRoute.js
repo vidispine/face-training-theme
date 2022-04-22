@@ -40,15 +40,14 @@ const encodeJsonCookie = (decodedJsonCookie) => {
 
 const getApiServerFromPathname = (pathname) => {
   // match on '//vdt-react-videolibrary/server/https%3A%2F%2Ftest.myvidispine.com/item/'
-  let match = pathToRegexp('/:basename/server/:serverUrl/:any*').exec(pathname);
+  let match = pathToRegexp('/server/:serverUrl/:any*').exec(pathname);
   // match on '//vdt-react-videolibrary/server/https%3A%2F%2Ftest.myvidispine.com'
-  if (!match)
-    match = pathToRegexp('/:basename/server/:serverUrl', [], { strict: true }).exec(pathname);
+  if (!match) match = pathToRegexp('/server/:serverUrl', [], { strict: true }).exec(pathname);
   // match on '/server/https%3A%2F%2Ftest.myvidispine.com'
   if (!match) match = pathToRegexp('/server/:serverUrl/:any*').exec(pathname);
   if (!match) return undefined;
   try {
-    const uriEncodedserverUrl = match[2];
+    const uriEncodedserverUrl = match[1];
     const serverUrl = decodeURIComponent(uriEncodedserverUrl);
     return serverUrl;
   } catch (e) {
