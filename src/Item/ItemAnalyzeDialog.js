@@ -34,7 +34,7 @@ export function ItemAnalyzeDialogComponent({ open, onClose, itemId }) {
       analyzeJobDocument: {},
       queryParams: {
         resourceId,
-        jobmetadata: [{ key: 'cognitive_service_KeyframeInterval', value: 1 }],
+        jobmetadata: [{ key: 'cognitive_service_KeyframeInterval', value: 2 }],
         ...(callbackId && { callbackId }),
       },
     }).then(() => onClose());
@@ -47,7 +47,7 @@ export function ItemAnalyzeDialogComponent({ open, onClose, itemId }) {
           analyzeJobDocument: {},
           queryParams: {
             resourceId: id,
-            jobmetadata: [{ key: 'cognitive_service_KeyframeInterval', value: 1 }],
+            jobmetadata: [{ key: 'cognitive_service_KeyframeInterval', value: 2 }],
             ...(callbackId && { callbackId }),
           },
           costEstimate: true,
