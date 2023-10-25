@@ -14,7 +14,7 @@ import {
   TrainingProvider,
 } from './Context';
 import { Item } from './Item';
-import { SearchItem } from './Search';
+// import { SearchItem } from './Search';
 import { Upload, onUploadFile } from './Upload';
 import { Training, TrainingDetails } from './Training';
 
@@ -64,16 +64,16 @@ function App({ username: userName, onLogout, serverUrl, onLogin }) {
             <Route path="/item/:itemId">
               <Item />
             </Route>
-            <Route path="/item/">
+            {/* <Route path="/item/">
               <SearchItem />
-            </Route>
+            </Route> */}
             <Route path="/training/:itemId">
               <TrainingDetails />
             </Route>
             <Route path="/training/">
               <Training />
             </Route>
-            <Redirect from="/" push to="/item/" />
+            <Redirect from="/" push to="/training/" />
           </Switch>
         </Box>
       </Box>

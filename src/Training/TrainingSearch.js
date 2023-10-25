@@ -1,11 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import debounce from 'lodash.debounce';
-
 import { Box, Grid, Button, Collapse } from '@material-ui/core';
 import { job as JobApi } from '@vidispine/vdt-api';
 import { useAutocomplete } from '@vidispine/vdt-react';
 import { ItemGrid, Pagination, SearchInput, SearchSuggestions } from '@vidispine/vdt-materialui';
-
+// import useProxy from '../proxy';
+import TrainingSearchContent from './TrainingSearchContent';
 import { useSnackbar, useDialog } from '../Context';
 import TrainingCard from './TrainingCard';
 import TrainingDrawer from './TrainingDrawer';
@@ -21,6 +22,42 @@ const ERROR_STATES = ['FAILED_TOTAL', 'ABORTED'];
 const SUCCESSFUL_STATES = ['FINISHED', 'FINISHED_WARNING'];
 
 export default ({ itemListType, onRefresh, state }) => {
+  const [deepData, setData] = React.useState([]);
+  async function fetchClasses(apiKey, datasetId) {
+    const url = `/api/v1/datasets/${datasetId}/classes/`;
+
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: apiKey,
+      },
+    };
+
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
+      throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+    } catch (error) {
+      console.error('An error occurred:', error);
+      throw error;
+    }
+  }
+
+  const apiKey = 'Key OSgGHLZ0WU31A1o119djd4rpVPFz8JWb55HolGKHdUAtx0flH1';
+  const datasetId = '2c156052-fd89-47fb-964a-f3e4a2e5123e';
+
+  React.useEffect(() => {
+    fetchClasses(apiKey, datasetId)
+      .then((r) => {
+        setData(r);
+      })
+      .catch((error) => {
+        console.error('An error occurred:', error);
+      });
+  }, []);
   const { showDialog } = useDialog();
   const { setNotification } = useSnackbar();
   const {
@@ -135,10 +172,12 @@ export default ({ itemListType, onRefresh, state }) => {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Collapse in={expanded}>
+          {/* <Collapse in={expanded}>
             <TrainingFilter filter={itemSearchDocument} setFilter={setItemSearchDocument} />
-          </Collapse>
-          <ItemGrid
+          </Collapse> */}
+          {deepData.data && <TrainingSearchContent data={deepData} datasetId={datasetId} />}
+
+          {/* <ItemGrid
             itemList={itemList}
             itemListType={itemListType}
             GridContainerProps={{ spacing: 2 }}
@@ -155,7 +194,7 @@ export default ({ itemListType, onRefresh, state }) => {
               subheaderSelector: ({ created }) => created,
               avatarSelector: ({ method }) => method,
             }}
-          />
+          /> */}
         </Grid>
       </Grid>
       <TrainingDrawer open={Boolean(drawer)} item={drawer} onClose={setDrawer} onDrop={onDrop} />

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 import { withStyles, Box, Grid, Button, Typography, CircularProgress } from '@material-ui/core';
@@ -67,8 +68,8 @@ const CollectionSearch = ({ collectionId, setCollectionId, onRefresh: onRefreshI
     queryParams,
     matrixParams,
   });
-  const { collection: collectionList = [], hits: count = 0 } = collectionListType;
-
+  const { collection: collectionList1 = [], hits: count = 0 } = collectionListType;
+  const collectionList = [];
   const onRefresh = () => {
     onRefreshItems();
     onRefreshCollections();
@@ -106,14 +107,14 @@ const CollectionSearch = ({ collectionId, setCollectionId, onRefresh: onRefreshI
       <Grid item xs={12}>
         <Box height={50} display="flex" alignItems="center">
           <SearchInput
-            onSubmit={setSearchText}
+            // onSubmit={setSearchText}
             searchPlaceholder="Search collections..."
             InputBaseProps={{ style: { flexGrow: 1 } }}
           />
         </Box>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h6">Filter by collection</Typography>
+        <Typography variant="h6">Filter by indexes</Typography>
       </Grid>
       {collectionList.map((collectionType) => (
         <Grid key={collectionType.id} item xs={12}>
@@ -130,16 +131,16 @@ const CollectionSearch = ({ collectionId, setCollectionId, onRefresh: onRefreshI
           <Button
             startIcon={isLoading ? <CircularProgress size={20} /> : <ExpandIcon fontSize="small" />}
             disabled={collectionList.length === count}
-            onClick={onLoadMore}
+            // onClick={onLoadMore}
           >
             Load more...
           </Button>
         </Grid>
       )}
       <Grid item xs={12}>
-        <NewButton startIcon={<AddIcon fontSize="small" />} onClick={onClick} onDrop={onDrop}>
+        {/* <NewButton startIcon={<AddIcon fontSize="small" />} onClick={onClick} onDrop={onDrop}>
           Create collection
-        </NewButton>
+        </NewButton> */}
       </Grid>
     </Grid>
   );

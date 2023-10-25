@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserAvatarButton, useThemeContext } from '@vidispine/vdt-materialui';
@@ -87,7 +88,7 @@ export default function Header({ userName, serverUrl, onLogout }) {
           alignItems="center"
           gridColumn={breakpoint ? '1 / span 2' : 'initial'}
         >
-          <Button
+          {/* <Button
             activeClassName="selected"
             variant="text"
             component={NavLink}
@@ -96,8 +97,8 @@ export default function Header({ userName, serverUrl, onLogout }) {
             disableRipple
           >
             {t('upload')}
-          </Button>
-          <Button
+          </Button> */}
+          {/* <Button
             activeClassName="selected"
             variant="text"
             component={NavLink}
@@ -106,7 +107,7 @@ export default function Header({ userName, serverUrl, onLogout }) {
             disableRipple
           >
             {t('Content')}
-          </Button>
+          </Button> */}
           <Button
             activeClassName="selected"
             variant="text"
@@ -117,7 +118,7 @@ export default function Header({ userName, serverUrl, onLogout }) {
           >
             {t('Faces')}
           </Button>
-          <MUIButton
+          {/* <MUIButton
             startIcon={<FaceIcon />}
             onClick={onClick}
             variant="contained"
@@ -125,7 +126,7 @@ export default function Header({ userName, serverUrl, onLogout }) {
             disableRipple
           >
             {t('Train faces')}
-          </MUIButton>
+          </MUIButton> */}
         </Box>
         <Box display="flex" justifyContent="flex-end" gridRow={breakpoint ? '1' : 'initial'}>
           <UserAvatarButton

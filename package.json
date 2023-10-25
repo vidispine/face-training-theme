@@ -6,6 +6,7 @@
   },
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://api.deepva.com",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -24,6 +25,7 @@
     "react": "^17.0.2",
     "react-cookie": "^4.0.3",
     "react-dom": "^17.0.2",
+    "react-dropzone": "^14.2.3",
     "react-i18next": "^11.12.0",
     "react-image-crop": "^9.0.4",
     "react-router-dom": "^5.2.0",
@@ -35,7 +37,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "GENERATE_SOURCEMAP=false PUBLIC_URL=${npm_package_homepage} yarn build && cp build/index.html build/404.html",
